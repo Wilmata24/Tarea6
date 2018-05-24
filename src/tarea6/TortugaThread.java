@@ -5,28 +5,37 @@
  */
 package tarea6;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Wilmata
  */
 public class TortugaThread implements Runnable {
 
+     LiebreThread liebre = new LiebreThread();
+    
+    public static int contTortuga = 0;
+    
     public TortugaThread() {
     }
 
     @Override
     public void run() {
-        int i = 0;
-        System.out.println("arranco la tortuga");
-        while (i < 15) {
+        int contador = 0;
+        System.out.println("¡La tortuga empieza la carrera!");
+        while (contador <  51) {
+             contTortuga=contador;
             try {
-                Thread.sleep(5000);
-                System.out.println("soy la tortuga");
+                Thread.sleep(1500);
+                System.out.println("La tortuga va por el metro: " + contador);
             } catch (InterruptedException ex) {
+                Logger.getLogger(TortugaThread.class.getName()).log(Level.SEVERE, null, ex);
             }
-            i++;
+            contador++;
         }
-        System.out.println("termina la tortuga");
+        System.out.println("¡La tortuga ha llegado a la meta!");
     }
 
 }
